@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Counter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicons/main.ico">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(function (registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(function (error) {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="img/us.png" alt="Image 1" class="grid-item">
+        </div>
+        <a href="initpic.html">
+            <div class="grid-item">
+                <img src="img/couplepic.gif" alt="Image 2" class="grid-item">
+            </div>
+        </a>
+        <a href="loveletter.html">
+            <div class="grid-item">
+                <img src="img/loveletters.gif" alt="Image 3" class="grid-item">
+            </div>
+        </a>
+        <a href="counter.html">
+            <div class="grid-item">
+                <img src="img/lovecounter.gif" alt="Image 4" class="grid-item">
+            </div>
+        </a>
+        <a href="specialdays.html">
+            <div class="grid-item">
+                <img src="img/specialdays.gif" alt="Image 5" class="grid-item">
+            </div>
+        </a>
+        <a href="playlist.html">
+            <div class="grid-item">
+                <img src="img/playlist.gif" alt="Image 6" class="grid-item">
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>
