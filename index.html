@@ -9,17 +9,32 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="favicons/main.ico">
 
-   <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-            .then(registration => {
-                console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch(error => {
-                console.error('Service Worker registration failed:', error);
-            });
-    }
-</script>
+  <script>
+        if ('serviceWorker' in navigator) {
+            // Your asynchronous function or promise
+            function someAsyncFunction() {
+                return new Promise((resolve, reject) => {
+                    // Your asynchronous code here
+                    // For example, simulating an async operation with a timeout
+                    setTimeout(() => {
+                        resolve('Async operation completed successfully');
+                    }, 2000);
+                });
+            }
+
+            // Register the service worker
+            navigator.serviceWorker.register('/path/to/your/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+
+                    // Send a message to the service worker with a promise
+                    registration.active.postMessage({ promise: someAsyncFunction() });
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
 
 
 </head>
