@@ -1,41 +1,15 @@
-function initializeNotifications() {
-    if ('Notification' in window) {
-        Notification.requestPermission().then(function (permission) {
-            console.log("Notification permission:", permission);
-        });
-    }
-}
+var dv = document.getElementById("content");
+dv.style.opacity = 0;
+var val = 0;
+var ok = 2; // Ensure it's initialized with 2
 
-function showNotification(title, message) {
-    Notification.requestPermission().then(function (permission) {
-        if (permission === "granted") {
-            var notification = new Notification(title, {
-                body: message,
-            });
-        }
-    });
-}
-
-function updateCounterDisplay(years, months, days, hours, minutes, seconds) {
-    // Update the counter display
-    document.getElementById("y").innerHTML = years;
-    document.getElementById("m").innerHTML = months;
-    document.getElementById("d").innerHTML = days;
-    document.getElementById("h").innerHTML = hours;
-    document.getElementById("n").innerHTML = minutes;
-    document.getElementById("s").innerHTML = seconds;
-}
-
-function checkAndSendNotification() {
+function timer() {
     var start = new Date(2023, 7, 15, 0, 0);
     var now = new Date();
 
     var years = now.getFullYear() - start.getFullYear();
     var months = now.getMonth() - start.getMonth();
     var days = now.getDate() - start.getDate();
-    var hours = now.getHours();
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
 
     if (days < 0) {
         months--;
@@ -54,23 +28,50 @@ function checkAndSendNotification() {
         days = 0;
     }
 
-    // Update the counter display
-    updateCounterDisplay(years, months, days, hours, minutes, seconds);
+    var h = now.getHours();
+    if (h < 10) {
+        h = "0" + h;
+    }
+    var m = now.getMinutes();
+    if (m < 10) {
+        m = "0" + m;
+    }
+    var s = now.getSeconds();
+    if (s < 10) {
+        s = "0" + s;
+    }
 
-    // Check for special notifications
-    if (days === 0 && months !== 0) {
-        // Situation 2: Today is our Monthsary Honey
-        showNotification('Happy Monthsary', 'Today is our Monthsary Honey!');
-    } else if (years === 1 && months === 0 && days === 0) {
-        // Situation 3: This Is Our Anniversary! LET'S Gooooo
-        showNotification('Happy Anniversary', 'This Is Our Anniversary! LET\'S Gooooo');
+    document.getElementById("y").innerHTML = years;
+    document.getElementById("m").innerHTML = months;
+    document.getElementById("d").innerHTML = days;
+    document.getElementById("h").innerHTML = h;
+    document.getElementById("n").innerHTML = m;
+    document.getElementById("s").innerHTML = s;
+}
+
+function fadein() {
+    if (val < 1) {
+        val += 0.025;
+        dv.style.opacity = val;
     } else {
-        // Situation 1: Hey Honey, We've been loved for ...months and ...days.
-        var notificationMessage = 'Hey Honey, We\'ve been loved for ' + months + ' months and ' + days + ' days.';
-        showNotification('Been Love Reminder', notificationMessage);
+        clearInterval(fadeinInterval);
+        if (ok == 2) {
+            ok += 1;
+        }
     }
 }
 
-// Call the necessary functions directly when the page loads or refreshes
-initializeNotifications();
-checkAndSendNotification();
+var fadeInterval;
+var fadeinInterval;
+
+timer();
+setInterval(timer, 1000);
+fadeInterval = setInterval(function () {
+    if (ok == 2) {
+        clearInterval(fadeInterval);
+        fadeinInterval = setInterval(fadein, 50);
+    }
+}, 50);
+
+// Log a message to ensure the script is loaded
+console.log('counter.js loaded');
