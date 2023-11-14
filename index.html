@@ -22,17 +22,21 @@
                 });
             }
 
-            // Register the service worker
             navigator.serviceWorker.register('service-worker.js')
-                .then(registration => {
-                    console.log('Service Worker registered with scope:', registration.scope);
+              .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
 
-                    // Send a message to the service worker with a promise
-                    registration.active.postMessage({ promise: someAsyncFunction() });
-                })
-                .catch(error => {
-                    console.error('Service Worker registration failed:', error);
-                });
+            // Ensure that registration.active is not null before accessing it
+            if (registration.active) {
+      // Access properties of registration.active
+            } else {
+                  console.error('Service Worker registration failed: registration.active is null');
+            }
+          })
+  .catch(error => {
+    console.error('Service Worker registration failed:', error);
+  });
+
         }
     </script>
 
