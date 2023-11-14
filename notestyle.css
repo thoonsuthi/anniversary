@@ -63,19 +63,23 @@ body {
     background-color: #D2E3C8;
     width: 300px;
     max-height: 70vh;
-    /* Add a maximum height and allow scrolling if the content exceeds it */
     overflow: auto;
     padding: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    white-space: pre-line;
+    /* Preserve spaces and line breaks */
 }
 
 .popup-title {
+    text-align: center;
     font-weight: bold;
+    margin-bottom: 5px;
+    /* Adjust the margin-bottom as needed */
 }
 
-.popup-body {
+/* .popup-body {
     margin-top: 10px;
-}
+} */
 
 .close-button {
     position: absolute;
