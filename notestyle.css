@@ -98,6 +98,16 @@ body {
 
 }
 
+.note-title.mama.crd {
+    font-family: 'Pyidaungsu';
+    background-color: #c5ffdf;
+    color: #141718;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
 .mynotes {
     font-family: 'Pyidaungsu';
     background-color: #bbecff;
