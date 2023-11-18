@@ -53,6 +53,11 @@ body {
     padding: 10px;
 }
 
+.note-body.read {
+    background-color: #777777;
+    color: #777777;
+}
+
 .note-popup {
     font-family: 'Pyidaungsu';
     display: none;
@@ -67,6 +72,8 @@ body {
     padding: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     white-space: pre-line;
+    word-wrap: break-word;
+
     /* Preserve spaces and line breaks */
 }
 
@@ -101,6 +108,26 @@ body {
 .note-title.mama.crd {
     font-family: 'Pyidaungsu';
     background-color: #c5ffdf;
+    color: #141718;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.note-title.mama.things {
+    font-family: 'Pyidaungsu';
+    background-color: #FFD966;
+    color: #141718;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.note-title.mama.read {
+    font-family: 'Pyidaungsu';
+    background-color: #C683D7;
     color: #141718;
     padding: 5px;
     font-weight: bold;
