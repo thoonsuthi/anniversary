@@ -40,8 +40,7 @@ function timer() {
     if (s < 10) {
         s = "0" + s;
     }
-
-    document.getElementById("y").innerHTML = years;
+    
     document.getElementById("m").innerHTML = months;
     document.getElementById("d").innerHTML = days;
     document.getElementById("h").innerHTML = h;
