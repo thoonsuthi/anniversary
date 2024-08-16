@@ -20,49 +20,46 @@ body {
 }
 
 .note {
-    border-radius: 2%;
+    border-radius: 15px;
     justify-content: center;
     align-items: center;
     width: 300px;
     height: 200px;
     background-color: #FFFBF5;
     margin: 10px;
-    border: 1px solid #ddd;
+    border: 2px solid #F4BF96;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    transition: transform 0.2s;
-}
-
-.book {
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 200px;
-    background-color: #FFFBF5;
-    cursor: pointer;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.2s;
+    transition: transform 0.2s ease-in-out;
 }
 
 .note:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .note-title {
     font-family: 'Pyidaungsu';
     background-color: #F4BF96;
     color: #fff;
-    padding: 5px;
+    padding: 10px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 2px solid #FFFBF5;
+    border-radius: 15px 15px 0 0;
 }
 
 .note-body {
     font-family: 'Pyidaungsu';
-    font-size: 14px;
-    padding: 10px;
+    font-size: 16px;
+    padding: 15px;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    white-space: pre-line;
 }
 
 .note-body.read {
@@ -77,81 +74,171 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #D2E3C8;
-    width: 300px;
+    background-color: #FFF8E7;
+    border: 5px solid #F4BF96;
+    border-radius: 20px;
+    width: 340px;
     max-height: 70vh;
-    overflow: auto;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    white-space: pre-line;
-    word-wrap: break-word;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
 
-    /* Preserve spaces and line breaks */
+.note-popup:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    border: 3px solid #FFD700; /* Elegant golden frame */
+    pointer-events: none;
 }
 
 .popup-title {
     text-align: center;
     font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
-/* .popup-body {
-    margin-top: 10px;
-} */
+.popup-body {
+    font-size: 18px;
+    margin-top: 15px;
+    max-height: 55vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    box-sizing: border-box;
+    white-space: pre-line;
+    background-color: #FFFAF0;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+/* Close button with a sweet and adorable look */
 .close-button {
     position: absolute;
     top: 10px;
-    right: 12px;
+    right: 10px;
     cursor: pointer;
-    font-size: 22px;
-    color: red;
+    font-size: 24px;
+    color: #fff;
+    background-color: #F44336;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 34px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #FF6B6B;
 }
 
 .note-title.mama {
-    font-family: 'Pyidaungsu';
     background-color: #ffc5ec;
     color: #141718;
-    padding: 5px;
-    font-weight: bold;
-    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+}
 
+.note-title.mama:before {
+    content: "🌸";
+    position: absolute;
+    left: 5px;
+}
+
+.note-title.mama:after {
+    content: "💖";
+    position: absolute;
+    right: 5px;
 }
 
 .note-title.mama.crd {
-    font-family: 'Pyidaungsu';
     background-color: #c5ffdf;
     color: #141718;
-    padding: 5px;
-    font-weight: bold;
-    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+}
 
+.note-title.mama.crd:before {
+    content: "🍀";
+    position: absolute;
+    left: 5px;
+}
+
+.note-title.mama.crd:after {
+    content: "🌟";
+    position: absolute;
+    right: 5px;
 }
 
 .note-title.mama.things {
-    font-family: 'Pyidaungsu';
     background-color: #FFD966;
     color: #141718;
-    padding: 5px;
-    font-weight: bold;
-    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+}
 
+.note-title.mama.things:before {
+    content: "📌";
+    position: absolute;
+    left: 5px;
+}
+
+.note-title.mama.things:after {
+    content: "💡";
+    position: absolute;
+    right: 5px;
 }
 
 .note-title.mama.read {
-    font-family: 'Pyidaungsu';
     background-color: #C683D7;
     color: #141718;
-    padding: 5px;
-    font-weight: bold;
-    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+}
 
+.note-title.mama.read:before {
+    content: "📖";
+    position: absolute;
+    left: 5px;
+}
+
+.note-title.mama.read:after {
+    content: "✨";
+    position: absolute;
+    right: 5px;
 }
 
 .mynotes {
-    font-family: 'Pyidaungsu';
     background-color: #bbecff;
     color: #141718;
-    padding: 5px;
     font-weight: bold;
     font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #FFFBF5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book {
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    background-color: #FFFBF5;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s;
 }
