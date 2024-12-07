@@ -36,7 +36,7 @@ function navigateToNextPage() {
 
 function navigateToPreviousPage() {
     // Add logic to move to the previous page or URL
-    window.location.href = 'home2.html'; // Replace with your actual previous page URL
+    window.location.href = 'index.html'; // Replace with your actual previous page URL
 }
 // script.js
 function initializeNotifications() {
