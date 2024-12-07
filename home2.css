@@ -1,0 +1,80 @@
+ body {
+    background-image:    url(img/home2.jpg);
+    background-size: auto;                      /* <------ */
+    background-repeat:   repeat;
+    background-position: center;              /* optional, center the image */ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: auto;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffe6e6; /* Light romantic background */
+  } 
+  
+  .heart {
+    position: relative;
+    width: 100px; /* Heart width */
+    height: 100px; /* Heart height */
+    background: linear-gradient(584deg, rgb(255, 119, 142) 50%, rgb(255, 119, 142) 50%);
+    transform: rotate(-45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    animation: glowHeart 1.5s ease-in-out infinite alternate; /* Glowing animation */
+  } 
+  
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: inherit;
+    border-radius: 50%;
+  } 
+  
+  .heart::before {
+    top: -50px;
+    left: 0;
+  } 
+  
+  .heart::after {
+    top: 0;
+    left: 50px;
+  } 
+  
+  /* Glowing effect animation for the heart */
+  @keyframes glowHeart {
+    0% {
+      box-shadow: 0 0 20px 10px rgba(253, 245, 14, 0.948), 0 0 50px 20px rgba(255, 0, 255, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 10px 2px rgb(109, 250, 15), 0 0 50px 20px rgba(255, 0, 255, 0.5);
+    }
+  } 
+  
+  .text {
+    position: absolute;
+    top: 8%; /* Position the text at the top of the heart */
+    left: 21%; /* Center horizontally */
+    transform: rotate(45deg); /* Adjust to exactly center */
+    text-align: center; /* Center the text inside */
+    z-index: 2; /* Ensure it stays on top */
+  } 
+  
+  #days {
+    color: black;
+    font-size: 35px; /* Font size of the number */
+    font-weight: bold;
+    text-shadow: 3px 3px 4px  #f3f3f3;
+  } 
+  
+  .label {
+    color: black;
+    font-size: 22px; /* Font siz I'll e for the label */
+    font-weight: normal;
+    margin-top: 5px; /* Space between the number and the label */
+    text-shadow:2px 2px 3px #f3f3f3;
+  }
