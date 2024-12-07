@@ -1,3 +1,44 @@
+let startX;
+let endX;
+
+// Function to handle touch start
+function handleTouchStart(event) {
+    startX = event.touches[0].clientX;
+}
+
+// Function to handle touch end
+function handleTouchEnd(event) {
+    endX = event.changedTouches[0].clientX;
+    handleSwipe();
+}
+
+// Function to determine swipe direction
+function handleSwipe() {
+    const swipeDistance = endX - startX;
+    if (swipeDistance > 50) {
+        // Swipe right: Go to the previous page
+        navigateToPreviousPage();
+    } else if (swipeDistance < -50) {
+        // Swipe left: Go to the next page
+        navigateToNextPage();
+    }
+}
+
+// Attach touch event listeners to the document
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchend', handleTouchEnd, false);
+
+// Define navigation functions for swiping
+function navigateToNextPage() {
+    // Add logic to move to the next page or URL
+    window.location.href = 'home2.html'; // Replace with your actual next page URL
+}
+
+function navigateToPreviousPage() {
+    // Add logic to move to the previous page or URL
+    window.location.href = 'counter.html'; // Replace with your actual previous page URL
+}
+
 var dv = document.getElementById("content");
 dv.style.opacity = 0;
 var val = 0;
@@ -40,7 +81,7 @@ function timer() {
     if (s < 10) {
         s = "0" + s;
     }
-
+    
     document.getElementById("y").innerHTML = years;
     document.getElementById("m").innerHTML = months;
     document.getElementById("d").innerHTML = days;
